@@ -20,8 +20,8 @@ final public class TouchView: UIImageView {
         set (value) {
             _config = value
             image = self.config.image
-            tintColor = self.config.color
-            timerLabel.textColor = self.config.color
+            tintColor = self.config.touchColor
+            timerLabel.textColor = self.config.touchColor
         }
     }
     
@@ -104,6 +104,11 @@ final public class TouchView: UIImageView {
     
     internal func updateSize() {
         guard let touch = touch else { return }
+        if touch.type == .direct {
+            tintColor = self.config.touchColor
+        } else if touch.type == .pencil {
+            tintColor = self.config.stylusColor
+        }
         let ratio = touch.majorRadius * 2.0 / _config.defaultSize.width
         if ratio != previousRatio {
             layer.transform = CATransform3DMakeScale(ratio, ratio, 1.0)
