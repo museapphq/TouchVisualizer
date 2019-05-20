@@ -65,6 +65,15 @@ final public class TouchView: UIImageView {
     
     // MARK: - Begin and end touching functions
     internal func beginTouch() {
+        guard let touch = touch else { return }
+        if #available(iOS 9.1, *) {
+            if touch.type == .direct {
+                tintColor = _config.touchColor
+            } else if touch.type == .pencil {
+                tintColor = _config.stylusColor
+            }
+        }
+        
         alpha = 1.0
         timerLabel.alpha = 0.0
         layer.transform = CATransform3DIdentity
