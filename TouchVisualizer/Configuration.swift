@@ -13,7 +13,13 @@ public struct Configuration {
     /**
     Color of touch points
     */
-    public var color: UIColor? = Constants.defaultColor
+    public var touchColor: UIColor? = Constants.defaultColor
+
+    /**
+     Color of stylus points
+     */
+    public var stylusColor: UIColor? = UIColor.green
+
 
     // Image of touch points
     public var image: UIImage? = {
