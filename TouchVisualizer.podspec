@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "TouchVisualizer"
-  s.version          = "3.1.1"
+  s.version          = "3.1.0"
   s.summary          = "Effective presentation with TouchVisualizer!"
   s.description      = <<-DESC
                        TouchVisualizer is a lightweight and pure Swift implemented library for visualizing touches on the screen. Let's give an effective presentation with TouchVisualizer!
@@ -25,7 +25,7 @@ Pod::Spec.new do |s|
   s.homepage         = "https://github.com/morizotter/TouchVisualizer"
   s.license          = 'MIT'
   s.author           = { "Naoki Morita" => "namorit@gmail.com" }
-  s.source           = { :git => "https://github.com/julsh/TouchVisualizer.git", :tag => s.version.to_s }
+  s.source           = { :git => "https://github.com/julsh/TouchVisualizer.git" }
   s.social_media_url = 'https://twitter.com/morizotter'
 
   s.platform     = :ios, '9.1'
