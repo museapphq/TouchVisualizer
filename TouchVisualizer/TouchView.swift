@@ -107,9 +107,9 @@ final public class TouchView: UIImageView {
         guard let touch = touch else { return }
         if #available(iOS 9.1, *) {
             if touch.type == .direct {
-                tintColor = self.config.touchColor
+                tintColor = _config.touchColor
             } else if touch.type == .pencil {
-                tintColor = self.config.stylusColor
+                tintColor = _config.stylusColor
             }
         }
         let ratio = touch.majorRadius * 2.0 / _config.defaultSize.width
