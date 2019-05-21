@@ -16,6 +16,7 @@ final public class TouchView: UIImageView {
         get { return _config }
         set (value) {
             _config = value
+            image = self.config.image
             tintColor = self.config.touchColor
 
         }
