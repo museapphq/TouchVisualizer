@@ -158,11 +158,7 @@ extension Visualizer {
                 }
             case .ended, .cancelled:
                 if let view = findTouchView(touch) {
-                    UIView.animate(withDuration: 0.2, delay: 0.0, options: .allowUserInteraction, animations: { () -> Void  in
-                        view.alpha = 0.0
-                    }, completion: { (finished) -> Void in
-                        view.removeFromSuperview()
-                    })
+                    view.removeFromSuperview()
                 }
             default:
                 continue
