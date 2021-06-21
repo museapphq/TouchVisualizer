@@ -9,6 +9,8 @@ final public class Visualizer:NSObject {
     
     // MARK: - Public Variables
     static public let sharedInstance = Visualizer()
+    public var numDirectActiveTouches: Int = 0
+
     fileprivate var enabled = false
     fileprivate var config: Configuration!
     fileprivate var touchViews = [TouchView]()
@@ -127,15 +129,22 @@ extension Visualizer {
     }
     
     public func handleEvent(_ event: UIEvent) {
-        if event.type != .touches {
-            return
-        }
-        
-        guard Visualizer.sharedInstance.enabled, let topWindow = UIApplication.shared.keyWindow else {
+        guard event.type == .touches, let allTouches = event.allTouches else {
             return
         }
 
-        for touch in event.allTouches! {
+        numDirectActiveTouches = allTouches
+            .filter { $0.type == .direct && $0.phase != .ended && $0.phase != .cancelled }
+            .count
+        
+        guard
+            Visualizer.sharedInstance.enabled,
+            let topWindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow })
+        else {
+            return
+        }
+
+        for touch in allTouches {
             let phase = touch.phase
             switch phase {
             case .began:
