@@ -33,6 +33,9 @@ extension UIWindow {
 extension UIWindow {
     @objc public func swizzledSendEvent(_ event: UIEvent) {
         Visualizer.sharedInstance.handleEvent(event)
+        if let keyboardEvent = event as? UIPressesEvent {
+            print("+++ keyboard event \(keyboardEvent)")
+        }
         swizzledSendEvent(event)
     }
 }
